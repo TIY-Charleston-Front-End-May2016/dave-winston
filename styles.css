@@ -1,0 +1,58 @@
+body {
+  background-color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: gray;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:none;
+}
+
+
+#chat-wrap {
+  background-image: url("images/take-a-beer-45471.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2%;
+  margin-top: 6%;
+  background-color: #E8E6ED;
+}
+
+
+header {
+  text-align: center;
+}
+
+#send-message-box {
+  width: 99%;
+  margin-bottom: 1%;
+}
+textarea {
+  width: 99%;
+}
+
+h1 {
+  color: black;
+  font-size: 46px;
+  padding: 3%;
+  font-weight: 380;
+  margin: 0 auto;
+}
+
+#chat-box {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:96%;
+    border:1px solid #black;
+    overflow:auto; }

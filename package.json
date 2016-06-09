@@ -1,7 +1,6 @@
 {
   "name": "dave-winston",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +19,7 @@
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.4",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
