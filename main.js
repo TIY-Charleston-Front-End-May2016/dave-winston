@@ -11,46 +11,41 @@ var brewskiChatski = {
     brewskiChatski.events();
   },
   styling: function () {
-    brewskiChatski.getChatRoom();
+    setInterval(function (){
+      brewskiChatski.readMessage();
+    },2000)
   },
   events: function () {
-
-      $('button').on('click', function (){
-        console.log("hello!");
-        var message = {
-          chat: $('textarea').val()
-        }
-        // brewskiChatski.createMessage(message)
-        // $('#chat-box').append(`<p data-id`)$('#newMessage').html(old + '<p>' + message + '</p>' );
+    // creates the form id in tinytiny
+    $('form').on('submit', function (event){
+      event.preventDefault();
+      console.log("hello!");
+      var message = {
+        chat: $('input').val(),
+        username: 'ww'
+      };
+      brewskiChatski.createMessage(message)
+      $('#newMessage').val('');
       });
-
-
-
-
-    // // creating a new message and saving it the chat-box
-    // $('form').on('submit', function (){
-    //   event.preventDefault();
-    //   var newMessage = {
-    //     chat: $(this).children('input').val();
-    //   }
-    //   brewskiChatski.createMessage(newMessage)
-    //   $(this).children('input').val();
-    //   })
-    // });
-    //
-    // // trying to refresh page each second
-    // <brewskiChatski onload = "setInterval('chat.update()',1000)">
+      //clearing the chat id from the 'x' button
+      $('#chat-box').on('click', 'a', function (event){
+        event.preventDefault();
+        var clearChat = $(this).parent().data('id');
+        console.log("cleared", clearChat);
+        $(this).parent().remove();
+        brewskiChatski.deleteMessage(clearChat);
+      })
 },
 
-createMessage: function (){
+createMessage: function(whateverYouWantGiveMe){
   $.ajax({
     url: brewskiChatski.url,
     method: 'POST',
-    data: ,
-    success: function (){
-      console.log("yes!", );
+    data: whateverYouWantGiveMe,
+    success: function (data){
+      console.log("yes!", data);
       //trying to save message to the chat-box
-      $('form textarea').append(`<li data-id="${data._id}"><a href=""> x</a>${data.chat}</li>`);
+      $('#chat-box').append(`<p data-id="${data._id}"><a href=""> <i class="fa fa-beer" aria-hidden="true"></i></a>${data.chat}</p>`);
       brewskiChatski.chatArr.push(data);
     },
     error: function () {
@@ -63,9 +58,12 @@ readMessage: function (){
   $.ajax({
     url: brewskiChatski.url,
     method: 'GET',
-    data: ,
-    success: function (){
-      console.log("yes!");
+    success: function (data){
+      console.log("yes!", data);
+      data.forEach (function (element) {
+        $('#chat-box').append(`<p data-id="${element._id}"><a href="#"><i class="fa fa-beer" aria-hidden="true"> </i></a>${element.chat}</p>`);
+        brewskiChatski.chatArr.push(element);
+      })
     },
     error: function () {
       console.log("not yet..", err );
@@ -73,30 +71,33 @@ readMessage: function (){
   })
 },
 
-updateMessage: function (){
+updateMessage: function (data){
   $.ajax({
-    url: brewskiChatski.url + "/" + '',
+    url: brewskiChatski.url,
     method: 'PUT',
-    data: ,
-    success: function (){
-      console.log("yes!", );
+    data: data,
+    success: function (data){
+      console.log("yes!",data );
     },
-    error: function () {
+    error: function (err) {
       console.log("not yet..", err );
     }
   })
 },
 
-deleteMessage: function (){
+deleteMessage: function (chatID){
+  var deleteChat = brewskiChatski.url + '/' + chatID;
   $.ajax({
-    url: deleteUrl,
+    url: deleteChat,
     method: 'DELETE',
-    data: ,
     success: function (){
-      console.log("yes!", );
+      console.log("we did it!", "");
+      brewskiChatski.readMessage();
     },
-    error: function () {
+    error: function (err) {
       console.log("not yet..", err );
     }
   })
 },
+
+}
