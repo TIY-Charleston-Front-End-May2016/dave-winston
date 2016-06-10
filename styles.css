@@ -14,6 +14,7 @@ a:hover {
 
 
 #chat-wrap {
+  border: 1px solid black;
   background-image: url("images/take-a-beer-45471.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,11 +32,30 @@ header {
 }
 
 #send-message-box {
-  width: 99%;
   margin-bottom: 1%;
+  width:96%;
+  border:1px solid #black;
+  overflow:auto;
 }
+
+#send-message-box button {
+  box-shadow: 4px black;
+  padding: 1.6em;
+  margin-right: 5px;
+  vertical-align: top;
+  width: 13%;
+  display: inline-block;
+  background-color: #E6E6E6;
+  border: 1px solid #BDBDBD;
+  border-radius: 6px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
 textarea {
-  width: 99%;
+  text-decoration: none;
+  width: 80%;
+  border-radius: 4px;
 }
 
 h1 {
@@ -47,12 +67,28 @@ h1 {
 }
 
 #chat-box {
-    text-align:left;
-    margin:0 auto;
-    margin-bottom:25px;
-    padding:10px;
-    background:#fff;
-    height:270px;
-    width:96%;
-    border:1px solid #black;
-    overflow:auto; }
+  overflow: auto;
+  border: 1px solid black;
+  text-align:left;
+  margin:0 auto;
+  margin-bottom:25px;
+  padding:10px;
+  background:#fff;
+  height:270px;
+  width:96%;
+  border:1px solid #black;
+  overflow:auto;
+  border-radius: 3px;
+}
+
+#chat-box p {
+  padding: 1em;
+  margin: 1em;
+  background-color: #E6E6E6;
+  border: 1px solid #BDBDBD;
+  border-radius: 6px;
+
+}
+#newMessage {
+  padding: 1em;
+}
