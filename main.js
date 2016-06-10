@@ -2,6 +2,7 @@ $(document).ready(function(){
   brewskiChatski.init();
 });
 
+
 var brewskiChatski = {
   url: "http://tiny-tiny.herokuapp.com/collections/brewskiChatski",
   chatArr: [],
@@ -13,16 +14,32 @@ var brewskiChatski = {
     brewskiChatski.getChatRoom();
   },
   events: function () {
-    // creating a new message and saving it the chat-box
+
+      $('button').on('click', function (){
+        console.log("hello!");
+        var message = {
+          chat: $('textarea').val()
+        }
+        // brewskiChatski.createMessage(message)
+        // $('#chat-box').append(`<p data-id`)$('#newMessage').html(old + '<p>' + message + '</p>' );
+      });
+
+
+
+
+    // // creating a new message and saving it the chat-box
     // $('form').on('submit', function (){
     //   event.preventDefault();
     //   var newMessage = {
-    //     chat: $(this).children('input').val()
+    //     chat: $(this).children('input').val();
     //   }
     //   brewskiChatski.createMessage(newMessage)
-    //   $(this).children('input').val('');
-    // },
-
+    //   $(this).children('input').val();
+    //   })
+    // });
+    //
+    // // trying to refresh page each second
+    // <brewskiChatski onload = "setInterval('chat.update()',1000)">
 },
 
 createMessage: function (){
@@ -32,6 +49,9 @@ createMessage: function (){
     data: ,
     success: function (){
       console.log("yes!", );
+      //trying to save message to the chat-box
+      $('form textarea').append(`<li data-id="${data._id}"><a href=""> x</a>${data.chat}</li>`);
+      brewskiChatski.chatArr.push(data);
     },
     error: function () {
       console.log("not yet..", err );
@@ -80,6 +100,3 @@ deleteMessage: function (){
     }
   })
 },
-
-// trying to refresh page each second
-<brewskiChatski onload = "setInterval('chat.update()',1000)">
