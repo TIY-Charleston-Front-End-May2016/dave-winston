@@ -11,9 +11,9 @@ var brewskiChatski = {
     brewskiChatski.events();
   },
   styling: function () {
-    setInterval(function (){
-      brewskiChatski.readMessage();
-    },2000)
+    // setInterval(function (){
+    //   brewskiChatski.readMessage();
+    // },2000)
   },
   events: function () {
     // creates the form id in tinytiny
@@ -21,8 +21,8 @@ var brewskiChatski = {
       event.preventDefault();
       console.log("hello!");
       var message = {
-        chat: $('input').val(),
-        username: 'ww'
+        chat: $('#newMessage').val(),
+        username: $(".username").val(),
       };
       brewskiChatski.createMessage(message)
       $('#newMessage').val('');
@@ -45,7 +45,7 @@ createMessage: function(whateverYouWantGiveMe){
     success: function (data){
       console.log("yes!", data);
       //trying to save message to the chat-box
-      $('#chat-box').append(`<p data-id="${data._id}"><a href=""> <i class="fa fa-beer" aria-hidden="true"></i></a>${data.chat}</p>`);
+      $('#chat-box').append(`<p data-id="${data._id}"><a href=""> <i class="fa fa-beer" aria-hidden="true"></i></a><span>${data.username} : </span>${data.chat}</p>`);
       brewskiChatski.chatArr.push(data);
     },
     error: function () {
@@ -92,7 +92,7 @@ deleteMessage: function (chatID){
     method: 'DELETE',
     success: function (){
       console.log("we did it!", "");
-      brewskiChatski.readMessage();
+      // brewskiChatski.readMessage();
     },
     error: function (err) {
       console.log("not yet..", err );

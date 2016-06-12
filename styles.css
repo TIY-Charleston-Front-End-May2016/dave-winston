@@ -101,3 +101,8 @@ h1 {
   width: 22%;
   padding: 1em;
 }
+#chat-box span {
+  font-weight: bolder;
+  font-style: italic;
+  font-family: helvetica;
+}
